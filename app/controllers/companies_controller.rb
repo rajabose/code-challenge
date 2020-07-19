@@ -1,4 +1,5 @@
 class CompaniesController < ApplicationController
+  require 'ostruct'
   before_action :set_company, except: [:index, :create, :new]
 
   def index
@@ -10,6 +11,9 @@ class CompaniesController < ApplicationController
   end
 
   def show
+    @address_details = ZipCodes.identify(@company[:zip_code]) 
+    @address_details_object = OpenStruct.new(@address_details)
+    render "show", :locals => {:company => @company, :address_details => @address_details_object}
   end
 
   def create
@@ -31,6 +35,16 @@ class CompaniesController < ApplicationController
       render :edit
     end
   end  
+
+  def destroy 
+    if @company.destroy  
+      flash[:notice] = 'Company deleted!'   
+      redirect_to companies_path
+    else   
+      flash[:error] = 'Failed to delete this Company!'   
+      render :index   
+    end   
+  end
 
   private
 

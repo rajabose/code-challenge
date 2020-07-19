@@ -10,17 +10,18 @@
   </div>
   <div class="bg-success">
     <div class="container p-5 text-white">
-      <h1><%= @company.name %></h1>
-      <h3>City, State</h3>
+      <h1><%= company.name %></h1>
+      <h3>City: <%= address_details.city %></h3>
+      <h3>City: <%= address_details.state_name %></h3>
       <pre>☝️ This is what needs to be udpated. Examples: Atlanta, GA or Nashvile, TN</pre>
     </div>
   </div>
-  <% if @company.description.present? %>
+  <% if company.description.present? %>
     <div class="bg-light p-5">
-      <%= @company.description %>
+      <%= company.description %>
     </div>
   <% end %>
   <div class="bg-success text-white text-center py-3">
-    <p class="lead"><%= @company.phone %> — <%= @company.email %></p>
+    <p class="lead"><%= company.phone %> — <%= @company.email %></p>
   </div>
 </div>

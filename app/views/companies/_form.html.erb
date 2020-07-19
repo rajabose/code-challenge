@@ -1,4 +1,11 @@
 <div class="py-5">
+   <% if @company.errors.any? %>
+     <% @company.errors.full_messages.each do |message|%>
+        <h3 class="alert alert-danger" role="alert"><%= message %> </h3>
+     <%end%>
+   <%end%>
+
+</br>
   <%= form_for @company do |f| %>
 
     <div class="row my-lg-3">
