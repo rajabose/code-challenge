@@ -5,6 +5,6 @@ require 'rails/test_help'
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
 class ActiveSupport::TestCase
-  parallelize(workers: :number_of_processors)
+  parallelize(workers: 1)
   fixtures :all
 end
